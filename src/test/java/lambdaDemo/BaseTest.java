@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 //import org.openqa.selenium.WebDriver;
 //import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -19,7 +20,8 @@ import java.util.Map;
 public class BaseTest {
 	
 	//protected WebDriver driver;
-    protected ChromeOptions options;
+    //protected ChromeOptions options;
+    protected SafariOptions options;
     protected RemoteWebDriver driver;
     public String username = "angeles.cergon@gmail.com";
     public String accesskey = "LT_nQF5oVDxuclEiJb52QTqCi6NnImVAUgOMDBAwBC9fsVUX8D";
@@ -27,12 +29,28 @@ public class BaseTest {
 	
     @BeforeMethod
     public void session() throws MalformedURLException {
+        // Chrome Configuration (Commented)
+        /*
         this.options = new ChromeOptions();
         this.options.setCapability("platformName", "Windows 10");
         this.options.setCapability("browserVersion", "latest");
         this.options.setCapability("LT:Options", Map.of(
                 "build", "Java Codespace Build",
-                "name", "Testscenario3",
+                "name", "Chrome Test",
+                "video", true,
+                "network", true,
+                "console", true,
+                "visual", true
+        ));
+        */
+        
+        // Safari Configuration (Active)
+        this.options = new SafariOptions();
+        this.options.setCapability("platformName", "macOS Ventura");
+        this.options.setCapability("browserVersion", "16");
+        this.options.setCapability("LT:Options", Map.of(
+                "build", "Java Codespace Build - Safari",
+                "name", "Safari Test",
                 "video", true,
                 "network", true,
                 "console", true,
