@@ -1,0 +1,21 @@
+image: gitpod/workspace-full
+
+tasks:
+  - name: Setup and Build
+    init: |
+      echo "Installing Maven dependencies..."
+      mvn clean install -DskipTests
+    command: |
+      echo "✅ Environment ready!"
+      echo "Run tests with: mvn test"
+      echo "Run specific test: mvn test -Dtest=TestScenario1"
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-pack
+    - vscjava.vscode-maven
+    - redhat.java
+
+ports:
+  - port: 8080
+    onOpen: ignore
